@@ -15,11 +15,12 @@ const store = createStore(
 	reducer,
 	composeEnhancers(applyMiddleware(thunk, logger))
 );
+const AppWithRouter = withRouter(App);
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App />
+      <AppWithRouter/>
     </Router>
   </Provider>
 , document.getElementById('root'));
