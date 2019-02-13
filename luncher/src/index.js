@@ -10,12 +10,12 @@ import reducer from './reducers/';
 import './index.css';
 import App from './App';
 
+const AppWithRouter = withRouter(App);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
 	reducer,
 	composeEnhancers(applyMiddleware(thunk, logger))
 );
-const AppWithRouter = withRouter(App);
 
 ReactDOM.render(
   <Provider store={store}>
