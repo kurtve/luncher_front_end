@@ -61,7 +61,7 @@ class Login extends Component {
                       value="user"
                       required
                     />
-                    <RadioLable htmlFor="admin">User</RadioLable>
+                    <RadioLable htmlFor="admin">Doner</RadioLable>
                   </div>
                   <div>
                     <InputRadio 
