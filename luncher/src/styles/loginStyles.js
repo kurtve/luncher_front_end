@@ -15,7 +15,6 @@ export const Wrap = styled.div`
 
   export const FormWrapper = styled.div`
     width: 275px;
-    height: 350px;
     background-color: white;
     margin: 0px auto;
     border-radius: 7px;
@@ -26,12 +25,13 @@ export const Wrap = styled.div`
 
     export const Logo = styled.img`
       width: 100%;
-      padding: 20px 0 20px 0;
+      padding: 20px 0 10px 0;
     `
 
     export const Form = styled.form`
       width: 80%;
       margin: 0px auto;
+      padding: 0 0 20px 0;
     `
 
       export const Input = styled.input`
@@ -42,7 +42,28 @@ export const Wrap = styled.div`
         border: 2px solid #ECECEC;
         border-radius: 7px;
         padding-left: 8px;
-         &:nth-child(2){margin-top: 10px;}
+        margin-top: 10px;
+      `
+
+      export const RadioDiv = styled.div`
+        width: 100%;
+        margin: 0px auto;
+        padding: 10px 0 5px 0;
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+      `
+
+      export const InputRadio = styled.input`
+        width: 15px;
+        height: 15px;
+        margin-top: 5px;
+      `
+
+      export const RadioLable = styled.label`
+        font-size: 15px;
+        color: #131313;
+        margin-left: 3px;
       `
 
       export const LoginButton = styled.button`

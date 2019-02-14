@@ -3,8 +3,11 @@ export {
   FormWrapper,
   Logo,
   Input,
+  RadioDiv,
+  InputRadio,
+  RadioLable,
   Form,
   LoginButton,
   RegisterText,
   RegisterSpan,
-} from '../styles/appStyles';
+} from '../styles/loginStyles';
