@@ -10,14 +10,13 @@ import reducer from './reducers/';
 import './index.css';
 import App from './App';
 
-const AppWithRouter = withRouter(App);
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk, logger)));
+const ench = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, ench(applyMiddleware(thunk, logger)));
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <AppWithRouter/>
+      <App/>
     </Router>
   </Provider>
 , document.getElementById('root'));
