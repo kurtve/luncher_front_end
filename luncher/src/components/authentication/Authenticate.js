@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Login from './Login';
+import Auth from './Auth';
 
 const authenticateHOC = App =>
   class extends Component {
@@ -10,7 +11,7 @@ const authenticateHOC = App =>
     render() {
       return (
         <div>
-          {this.state.loggedIn ? <App/> : <Login/>};
+          {this.state.loggedIn ? <App/> : <Auth/>};
         </div>
       )
     }

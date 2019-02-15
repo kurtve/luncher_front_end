@@ -58,6 +58,7 @@ export const Wrap = styled.div`
         width: 15px;
         height: 15px;
         margin-top: 5px;
+        cursor: pointer;
       `
 
       export const RadioLable = styled.label`
@@ -71,10 +72,15 @@ export const Wrap = styled.div`
          height: 40px;
          background-color: #1e90ff;
          color: white;
-         border: 2px solid #1e90ff;
+         border: 3px solid #1e90ff;
          border-radius: 7px;
          margin: 0px auto;
          margin-top: 15px;
+         cursor: pointer;
+          &:hover {
+            background-color: #1B82E6;
+            border: 3px solid #1B82E6;
+          }
       `
 
       export const RegisterText = styled.p`
