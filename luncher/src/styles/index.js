@@ -1,5 +1,5 @@
 export {
-  Wrap,
+  RegWrap,
   FormWrapper,
   Logo,
   Input,
@@ -8,6 +8,16 @@ export {
   RadioLable,
   Form,
   LoginButton,
+  RegisterButton,
   RegisterText,
   RegisterSpan,
 } from '../styles/loginStyles';
+
+export {
+  Wrap,
+  Nav,
+  AppLogo,
+  Menu,
+  ProfileLink,
+  LogoutButton,
+} from '../styles/appStyles';

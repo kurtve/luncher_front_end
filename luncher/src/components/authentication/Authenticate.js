@@ -5,7 +5,7 @@ import Auth from './Auth';
 const authenticateHOC = App =>
   class extends Component {
     state = {
-      loggedIn: false
+      loggedIn: true
     };
 
     render() {

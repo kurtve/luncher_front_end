@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrap = styled.div`
+export const RegWrap = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -82,6 +82,8 @@ export const Wrap = styled.div`
             border: 3px solid #1B82E6;
           }
       `
+      
+      export const RegisterButton = styled(LoginButton)``
 
       export const RegisterText = styled.p`
         font-size: 14px;

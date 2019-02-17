@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import LogoImg from '../../images/logo.png';
 import {
-  Wrap,
+  RegWrap,
   FormWrapper,
   Input,
   Form,
@@ -14,15 +14,20 @@ import {
 } from '../../styles';
 
 class Login extends Component {
-
   state = {
     userName: '',
     password: '',
   }
 
+  handleChange = e => {
+		this.setState({
+			[e.target.name]: e.target.value,
+		});
+  };
+
   render() {
     return (
-      <Wrap>
+      <RegWrap>
         <FormWrapper>
           <Logo src={LogoImg} />
           <Form>
@@ -30,18 +35,23 @@ class Login extends Component {
               type="text"
               name="userName"
               placeholder="Username"
+              value={this.state.userName}
+              onChange={e => this.handleChange(e)}
             />
             <Input
               type="password"
               name="password"
               placeholder="Password"
+              value={this.state.password}
+              onChange={e => this.handleChange(e)}
             />
             <LoginButton>LOGIN</LoginButton>
-            <RegisterText>Need an account? <RegisterSpan>Register</RegisterSpan></RegisterText>
+            <RegisterText>Need an account? 
+              <RegisterSpan onClick={() => this.props.register()}>Register</RegisterSpan>
+            </RegisterText>
           </Form>
-
         </FormWrapper>
-      </Wrap>
+      </RegWrap>
     );
   }
 }
