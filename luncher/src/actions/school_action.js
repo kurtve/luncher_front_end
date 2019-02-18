@@ -35,3 +35,27 @@ export const getAllSchools = () => dispatch => {
 		})
 		.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
 };
+
+export const deleteSchool = (userToken, schoolID) => dispatch => {
+	dispatch({ type: DELETE_SCHOOL_START });
+	axios({
+		method: 'delete',
+		url: ``,
+		headers: {
+			Authorization: userToken,
+		},
+	})
+		.then(res => {
+			dispatch({ type: DELETE_SCHOOL_SUCCESS, payload: res });
+			dispatch({ type: GET_ALLSCHOOLS_START });
+			axios({
+				method: 'get',
+				url: ``,
+			})
+				.then(res => {
+					dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res });
+				})
+				.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
+		})
+		.catch(err => dispatch({ type: DELETE_SCHOOL_FAILURE, payload: err }));
+};
