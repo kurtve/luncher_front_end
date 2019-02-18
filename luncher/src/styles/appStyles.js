@@ -84,4 +84,32 @@ export const Wrap = styled.div`
 		
 		export const P2 = styled(P)`
 			color: #9F9F9F;
-		`
+    `
+    
+  export const SchoolForm = styled.form`
+    width: 800px;
+    // border: 1px solid red;
+    margin: 0px auto;
+    margin-top: 40px;
+  `
+
+    export const SchoolName = styled.input`
+      width: 200px;
+      height: 36px;
+      border: 1px solid #9F9F9F;
+      padding-left: 10px;
+    `
+
+    export const AddSchool = styled.button`
+      width: 100px;
+      height: 40px;
+      border: 1px solid dodgerblue;
+      background-color: dodgerblue;
+      color: white;
+      margin-left: 10px;
+      cursor: pointer;
+        &:hover {
+          background-color: #1B82E6;
+          border: 1px solid #1B82E6;
+        }
+    `

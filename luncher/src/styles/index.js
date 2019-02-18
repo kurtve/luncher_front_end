@@ -26,4 +26,7 @@ export {
   PBoxLarge,
   P,
   P2,
+  SchoolForm,
+  SchoolName,
+  AddSchool,
 } from '../styles/appStyles';

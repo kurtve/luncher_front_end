@@ -8,6 +8,9 @@ export {
 	GET_USERINFO_START,
 	GET_USERINFO_SUCCESS,
 	GET_USERINFO_FAILURE,
+	registerUser,
+	loginUser,
+	getUserInfo,
 } from './login_action';
 
 export {
@@ -26,6 +29,11 @@ export {
 	SCHOOL_EDIT_START,
 	SCHOOL_EDIT_SUCCESS,
 	SCHOOL_EDIT_FAILURE,
+	getAllSchools,
+	deleteSchool,
+	addSchool,
+	getSchoolData,
+	schoolEdit,
 } from './school_action.js';
 
 export {
@@ -48,15 +56,3 @@ export {
 	GET_SCHOOL_DONATIONS_SUCCESS,
 	GET_SCHOOL_DONATIONS_FAILURE,
 } from './donation_actions';
-
-export {
-	EDIT_USER_START,
-	EDIT_USER_SUCCESS,
-	EDIT_USER_FAILURE,
-	DELETE_USER_START,
-	DELETE_USER_SUCCESS,
-	DELETE_USER_FAILURE,
-	USER_DONATIONS_START,
-	USER_DONATIONS_SUCCESS,
-	USER_DONATIONS_FAILURE,
-} from './profile_action';
