@@ -8,6 +8,7 @@ import Navigation from './components/navBar/Navigation';
 import Home from './components/home/Home';
 import Login from './components/authentication/Login';
 import Profile from './components/profile/Profile';
+import SchoolData from './components/school/SchoolData';
 
 class App extends Component {
   state = {
@@ -23,7 +24,7 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/profile/" component={Profile} />
-        {/* <Route path="/school/:id" render={props => <SchootData {...props} />} /> */}
+        <Route path="/school/:id" render={props => <SchoolData {...props} />} />
       </Wrap>
     );
   }
