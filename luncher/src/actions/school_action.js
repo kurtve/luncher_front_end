@@ -30,9 +30,7 @@ export const getAllSchools = () => dispatch => {
 		method: 'get',
 		url: ``,
 	})
-		.then(res => {
-			dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res });
-		})
+		.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
 		.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
 };
 
@@ -41,13 +39,8 @@ export const addSchool = (userToken, school) => dispatch => {
 	axios({
 		method: 'post',
 		url: ``,
-		headers: {
-			Authorization: userToken,
-		},
-		data: {
-			image: school.image,
-			schoolname: school.schoolname,
-		},
+		headers: {	Authorization: userToken,},
+		data: {schoolname: school.schoolname,},
 	})
 		.then(res => {
 			dispatch({ type: ADD_SCHOOL_SUCCESS, payload: res.data });
@@ -56,9 +49,7 @@ export const addSchool = (userToken, school) => dispatch => {
 				method: 'get',
 				url: ``,
 			})
-				.then(res => {
-					dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res });
-				})
+				.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
 				.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
 		})
 		.catch(err => dispatch({ type: ADD_SCHOOL_FAILURE, payload: err }));
@@ -69,9 +60,7 @@ export const deleteSchool = (userToken, schoolID) => dispatch => {
 	axios({
 		method: 'delete',
 		url: ``,
-		headers: {
-			Authorization: userToken,
-		},
+		headers: {Authorization: userToken},
 	})
 		.then(res => {
 			dispatch({ type: DELETE_SCHOOL_SUCCESS, payload: res });
@@ -80,9 +69,7 @@ export const deleteSchool = (userToken, schoolID) => dispatch => {
 				method: 'get',
 				url: ``,
 			})
-				.then(res => {
-					dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res });
-				})
+				.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
 				.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
 		})
 		.catch(err => dispatch({ type: DELETE_SCHOOL_FAILURE, payload: err }));
@@ -94,9 +81,7 @@ export const getSchoolData = id => dispatch => {
 		method: 'get',
 		url: ``,
 	})
-		.then(res => {
-			dispatch({ type: GET_SCHOOLDATA_SUCCESS, payload: res.data[0] });
-		})
+		.then(res => dispatch({ type: GET_SCHOOLDATA_SUCCESS, payload: res.data[0] }))
 		.catch(err => dispatch({ type: GET_SCHOOLDATA_FAILURE, payload: err }));
 };
 
@@ -105,9 +90,7 @@ export const schoolEdit = (userToken, info, id) => dispatch => {
 	axios({
 		method: 'put',
 		url: ``,
-		headers: {
-			Authorization: userToken,
-		},
+		headers: {Authorization: userToken,},
 		data: { schoolname: info.schoolName},
 	})
 		.then(res => {
@@ -117,9 +100,7 @@ export const schoolEdit = (userToken, info, id) => dispatch => {
 				method: 'get',
 				url: ``,
 			})
-        .then(res => {
-          dispatch({ type: GET_SCHOOLDATA_SUCCESS, payload: res.data[0] });
-        })
+        .then(res => dispatch({ type: GET_SCHOOLDATA_SUCCESS, payload: res.data[0] }))
         .catch(err => dispatch({ type: GET_SCHOOLDATA_FAILURE, payload: err }));
 		})
 		.catch(err => dispatch({ type: SCHOOL_EDIT_FAILURE, payload: err }));
