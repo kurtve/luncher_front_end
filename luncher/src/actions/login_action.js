@@ -33,3 +33,22 @@ export const registerUser = user => dispatch => {
 		})
 		.catch(err => dispatch({ type: REGISTER_FAILURE, payload: err }));
 };
+
+export const loginUser = user => dispatch => {
+	dispatch({ type: LOGIN_START });
+	axios({
+		method: 'post',
+		url: ``,
+		data: {
+			password: user.password,
+			userName: user.userName,
+		},
+	})
+		.then(res => {
+			dispatch({ type: LOGIN_SUCCESS, payload: res });
+			localStorage.setItem('userToken', res.data.token);
+			localStorage.setItem('userID', res.data.user.id);
+			window.location.reload();
+		})
+		.catch(err => dispatch({ type: LOGIN_FAILURE, payload: err }));
+};
