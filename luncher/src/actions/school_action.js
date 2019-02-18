@@ -99,3 +99,28 @@ export const getSchoolData = id => dispatch => {
 		})
 		.catch(err => dispatch({ type: GET_SCHOOLDATA_FAILURE, payload: err }));
 };
+
+export const schoolEdit = (userToken, info, id) => dispatch => {
+	dispatch({ type: SCHOOL_EDIT_START });
+	axios({
+		method: 'put',
+		url: ``,
+		headers: {
+			Authorization: userToken,
+		},
+		data: { schoolname: info.schoolName},
+	})
+		.then(res => {
+			dispatch({ type: SCHOOL_EDIT_SUCCESS, payload: res });
+			dispatch({ type: GET_SCHOOLDATA_START });
+			axios({
+				method: 'get',
+				url: ``,
+			})
+        .then(res => {
+          dispatch({ type: GET_SCHOOLDATA_SUCCESS, payload: res.data[0] });
+        })
+        .catch(err => dispatch({ type: GET_SCHOOLDATA_FAILURE, payload: err }));
+		})
+		.catch(err => dispatch({ type: SCHOOL_EDIT_FAILURE, payload: err }));
+};
