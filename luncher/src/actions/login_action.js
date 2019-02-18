@@ -52,3 +52,22 @@ export const loginUser = user => dispatch => {
 		})
 		.catch(err => dispatch({ type: LOGIN_FAILURE, payload: err }));
 };
+
+export const getUserInfo = userToken => dispatch => {
+	dispatch({ type: GET_USERINFO_START });
+	axios({
+		method: 'get',
+		url: '',
+		headers: {
+			Authorization: userToken,
+		},
+	})
+		.then(res => {
+			dispatch({ type: GET_USERINFO_SUCCESS, payload: res });
+		})
+		.catch(err => {
+			localStorage.clear();
+			window.location.reload('/');
+			dispatch({ type: GET_USERINFO_FAILURE, payload: err });
+		});
+};
