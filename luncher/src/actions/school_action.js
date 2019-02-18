@@ -36,6 +36,34 @@ export const getAllSchools = () => dispatch => {
 		.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
 };
 
+export const addSchool = (userToken, school) => dispatch => {
+	dispatch({ type: ADD_SCHOOL_START });
+	axios({
+		method: 'post',
+		url: ``,
+		headers: {
+			Authorization: userToken,
+		},
+		data: {
+			image: school.image,
+			schoolname: school.schoolname,
+		},
+	})
+		.then(res => {
+			dispatch({ type: ADD_SCHOOL_SUCCESS, payload: res.data });
+			dispatch({ type: GET_ALLSCHOOLS_START });
+			axios({
+				method: 'get',
+				url: ``,
+			})
+				.then(res => {
+					dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res });
+				})
+				.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
+		})
+		.catch(err => dispatch({ type: ADD_SCHOOL_FAILURE, payload: err }));
+};
+
 export const deleteSchool = (userToken, schoolID) => dispatch => {
 	dispatch({ type: DELETE_SCHOOL_START });
 	axios({
