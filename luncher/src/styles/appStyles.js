@@ -6,7 +6,9 @@ export const Wrap = styled.div`
   flex-flow: column;
   justify-content: center;
 `
-
+  // ----------
+  // NAVIGATION
+  // ----------
   export const Nav = styled.div`
     width: 100%;
     height: 70px;
@@ -47,3 +49,39 @@ export const Wrap = styled.div`
             border: 1px solid #1B82E6;
           }
       `
+  // -------
+  // PROFILE
+  // -------
+  export const ProfileWrap = styled.div`
+    width: 400px;
+    margin: 0px auto;
+		margin-top: 40px;
+		
+		padding: 10px 20px 20px 20px;
+	`
+		export const PRow = styled.div`
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			margin-top: 10px;
+		`
+
+		export const PBoxSmall = styled.div`
+			width: 36%;
+			background-color: dodgerblue;
+		`
+
+		export const PBoxLarge = styled.div`
+			width: 60%;
+		`
+
+    export const P = styled.p`
+			font-size: 16px;
+			color: gray;
+			padding-left: 6px;
+			color: white;
+		`
+		
+		export const P2 = styled(P)`
+			color: #9F9F9F;
+		`

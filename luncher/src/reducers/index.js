@@ -89,27 +89,27 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-	// REGISTER
-	// 	case REGISTER_START:
-	// 		return {};
-	// 	case REGISTER_SUCCESS:
-	// 		return {};
-	// 	case REGISTER_FAILURE:
-	// 		return {};
-	// //LOGIN
-	// 	case LOGIN_START:
-	// 		return {};
-	// 	case LOGIN_SUCCESS:
-	// 		return {};
-	// 	case LOGIN_FAILURE:
-	// 		return {};
-	// //USERINFO
-	// 	case GET_USERINFO_START:
-	// 		return {};
-	// 	case GET_USERINFO_SUCCESS:
-	// 		return {};
-	// 	case GET_USERINFO_FAILURE:
-	// 		return {};
+	//REGISTER
+		case REGISTER_START:
+			return {};
+		case REGISTER_SUCCESS:
+			return {};
+		case REGISTER_FAILURE:
+			return {};
+	//LOGIN
+		case LOGIN_START:
+			return {};
+		case LOGIN_SUCCESS:
+			return {};
+		case LOGIN_FAILURE:
+			return {};
+	//USERINFO
+		case GET_USERINFO_START:
+			return {};
+		case GET_USERINFO_SUCCESS:
+			return {};
+		case GET_USERINFO_FAILURE:
+			return {};
 		//GET ALL SCHOOLS
 		case GET_ALLSCHOOLS_START:
 			return {};
@@ -193,13 +193,6 @@ const reducer = (state = initialState, action) => {
 	// 	case GET_ALL_DONATIONS_SCHOOL_SUCCESS:
   //     return {};
 	// 	case GET_ALL_DONATIONS_SCHOOL_FAILURE:
-  //     return {};
-	// //EDIT USER
-	// 	case EDIT_USER_START:
-  //     return {};
-	// 	case EDIT_USER_SUCCESS:
-  //     return {};
-	// 	case EDIT_USER_FAILURE:
   //     return {};
 		default:
 			return;

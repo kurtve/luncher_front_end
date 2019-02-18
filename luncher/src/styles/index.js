@@ -20,4 +20,10 @@ export {
   Menu,
   ProfileLink,
   LogoutButton,
+  ProfileWrap,
+  PRow,
+  PBoxSmall,
+  PBoxLarge,
+  P,
+  P2,
 } from '../styles/appStyles';
