@@ -23,3 +23,15 @@ export const GET_SCHOOL_DONATIONS_FAILURE = 'GET_SCHOOL_DONATIONS_FAILURE';
 export const SCHOOL_EDIT_START = 'SCHOOL_EDIT_START';
 export const SCHOOL_EDIT_SUCCESS = 'SCHOOL_EDIT_SUCCESS';
 export const SCHOOL_EDIT_FAILURE = 'SCHOOL_EDIT_FAILURE';
+
+export const getAllSchools = () => dispatch => {
+	dispatch({ type: GET_ALLSCHOOLS_START });
+	axios({
+		method: 'get',
+		url: ``,
+	})
+		.then(res => {
+			dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res });
+		})
+		.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
+};
