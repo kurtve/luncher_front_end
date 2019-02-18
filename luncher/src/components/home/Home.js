@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getUserInfo, getAllSchools, deleteSchool, addSchool } from '../../actions';
 
 import { Wrap, SchoolForm, SchoolName, AddSchool } from '../../styles/index';
+import School from '../school/School';
 
 class Home extends Component {
 	state = {

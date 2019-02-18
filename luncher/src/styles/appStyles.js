@@ -86,6 +86,9 @@ export const Wrap = styled.div`
 			color: #9F9F9F;
     `
     
+  // ------
+  // SCHOOL
+  // ------
   export const SchoolForm = styled.form`
     width: 800px;
     // border: 1px solid red;
@@ -112,4 +115,21 @@ export const Wrap = styled.div`
           background-color: #1B82E6;
           border: 1px solid #1B82E6;
         }
+    `
+
+    export const SchoolBox = styled.div`
+      width: 800px;
+      border: 1px solid #9F9F9F;
+      margin: 0px auto;
+      margin-top: 20px;
+        &:hover {
+          border: 2px solid dodgerblue;
+        }
+    `
+
+    export const H2 = styled.h2`
+      font-size: 20px;
+      color: #9F9F9F;
+      padding-left: 15px;
+      text-decoration: none;
     `

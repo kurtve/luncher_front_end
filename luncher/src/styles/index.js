@@ -29,4 +29,6 @@ export {
   SchoolForm,
   SchoolName,
   AddSchool,
+  SchoolBox,
+  H2,
 } from '../styles/appStyles';
