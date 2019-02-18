@@ -87,3 +87,15 @@ export const deleteSchool = (userToken, schoolID) => dispatch => {
 		})
 		.catch(err => dispatch({ type: DELETE_SCHOOL_FAILURE, payload: err }));
 };
+
+export const getSchoolData = id => dispatch => {
+	dispatch({ type: GET_SCHOOLDATA_START });
+	axios({
+		method: 'get',
+		url: ``,
+	})
+		.then(res => {
+			dispatch({ type: GET_SCHOOLDATA_SUCCESS, payload: res.data[0] });
+		})
+		.catch(err => dispatch({ type: GET_SCHOOLDATA_FAILURE, payload: err }));
+};
