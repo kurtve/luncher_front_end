@@ -12,11 +12,13 @@ export const GET_USERINFO_START = 'GET_USERINFO_START';
 export const GET_USERINFO_SUCCESS = 'GET_USERINFO_SUCCESS';
 export const GET_USERINFO_FAILURE = 'GET_USERINFO_FAILURE';
 
+const API = process.env.API_URI;
+
 export const registerUser = user => dispatch => {
 	dispatch({ type: REGISTER_START });
 	axios({
 		method: 'post',
-		url: ``,
+		url: `${API}/`,
 		data: {
 			email: user.email,
 			firstName: user.firstName,
