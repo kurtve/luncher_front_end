@@ -1,32 +1,51 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import { Nav, AppLogo, Menu, ProfileLink, LogoutButton } from '../../styles/appStyles';
-import './Navigation.css';
 import Logo from '../../images/logo.png';
 
-const Navigation = props => {
-  const logoutUser = () => {
+class Navigation extends Component {
+  state = {
+    userToken: '',
+  }
+
+  componentDidMount() {
+    let userToken = localStorage.getItem('userToken');
+    this.setState({ userToken: userToken });
+  }
+
+  logoutUser = () => {
 		localStorage.removeItem('userToken');
 		localStorage.removeItem('id');
 		window.location.reload();
-  };
-  
-  return(
-    <Nav>
-      <Link to='/'>
-        <AppLogo src={Logo} />
-      </Link>
-      <Menu>
-        <NavLink className="profile" to='/profile/'>
-          <ProfileLink>Ssnow{/* {localStorage.getItem('userName')} */}</ProfileLink>
-        </NavLink>
-        <NavLink to='/' onClick={() => logoutUser()}>
-          <LogoutButton>Logout</LogoutButton>
-        </NavLink>
-      </Menu>
-    </Nav>
-  );
-};
+  }
+
+  render() {
+    return(
+      <Nav>
+        <Link to='/'>
+          <AppLogo src={Logo} />
+        </Link>
+          {this.state.userToken === null ? (
+            <Menu>
+              <NavLink to='/register' style={{ textDecoration: 'none'}}>
+                <ProfileLink>Register</ProfileLink>
+              </NavLink>
+              <NavLink to='/login'>
+                <LogoutButton>Login</LogoutButton>
+              </NavLink>
+            </Menu>
+
+          ) : (
+            <Menu>
+              <NavLink to='/' onClick={this.logoutUser}>
+                <LogoutButton>Logout</LogoutButton>
+              </NavLink>
+            </Menu>
+          )}
+      </Nav>
+    );
+  }
+}
 
 export default Navigation;

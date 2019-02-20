@@ -33,6 +33,7 @@ export const Wrap = styled.div`
       export const ProfileLink = styled.p`
         margin-top: 22px;
         color: dodgerblue;
+        cursor: pointer;
           &:hover{text-decoration: underline;}
       `
       export const LogoutButton = styled.button`
