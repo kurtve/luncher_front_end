@@ -4,8 +4,6 @@ export const GET_ALLSCHOOLS_START = 'GET_ALLSCHOOLS_START ';
 export const GET_ALLSCHOOLS_SUCCESS = 'GET_ALLSCHOOLS_SUCCESS';
 export const GET_ALLSCHOOLS_FAILURE = 'GET_ALLSCHOOLS_FAILURE';
 
-const API = process.env.API_URI;
-
 // export const DELETE_SCHOOL_START = 'DELETE_SCHOOL_START';
 // export const DELETE_SCHOOL_SUCCESS = 'DELETE_SCHOOL_SUCCESS';
 // export const DELETE_SCHOOL_FAILURE = 'DELETE_SCHOOL_FAILURE';
@@ -31,7 +29,7 @@ export const getAllSchools = () => dispatch => {
 
   axios
     .get(`http://localhost:4040/schools`)
-		.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res.data }))
+		.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
 		.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
 };
 

@@ -108,7 +108,7 @@ const reducer = (state = initialState, action) => {
 		case GET_ALLSCHOOLS_SUCCESS:
 			return {
 				...state,
-				schools: action.payload,
+				schools: action.payload.data,
 				getAllSchoolIsLoading: false,
 				getAllSchoolIsUpdating: false,
 			};

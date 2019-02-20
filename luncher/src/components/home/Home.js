@@ -8,7 +8,12 @@ import {
   // addSchool
 } from '../../actions';
 
-import { Wrap, SchoolForm, SchoolName, AddSchool } from '../../styles/index';
+import { 
+  Wrap,
+  SchoolForm,
+  SchoolName,
+  AddSchool
+} from '../../styles/index';
 import School from '../school/School';
 
 class Home extends Component {
@@ -24,13 +29,9 @@ class Home extends Component {
 	componentDidMount() {
     let userToken = localStorage.getItem('userToken');
     this.setState({ userToken: userToken });
+    this.props.getAllSchools();
 		// this.props.getAllSchools(userToken);
     // this.props.getUserInfo(userToken);
-    
-    // axios
-    //   .get('http://localhost:4040/schools')
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err));
 	}
 
 	handleChange = e => {
@@ -49,7 +50,14 @@ class Home extends Component {
 	render() {
 		return (
 			<Wrap>
-				{this.state.userToken === null ? null : (
+				{this.state.userToken === null ? (
+          this.props.schools.map(school => (
+            <School
+              key={school.id}
+              school={school}
+            />
+          ))
+        ) : (
           <SchoolForm
             name="addSchool"
             onSubmit={e => this.handleAddSchool(e)}>
@@ -61,13 +69,6 @@ class Home extends Component {
             <AddSchool>Add School</AddSchool>
           </SchoolForm>
         )}
-        {console.log(this.props.schools)}
-				{this.props.schools.map(school => (
-          <School
-            key={school.id}
-            school={school}
-          />
-				))}
 			</Wrap>
 		);
 	}
