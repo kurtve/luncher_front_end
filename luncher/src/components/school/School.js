@@ -9,6 +9,7 @@ const School = props => {
     <Link to={`/school/${props.school.id}`} style={{ textDecoration: 'none' }}>
       <SchoolBox>
         <H2>{props.school.schoolName}</H2>
+        {console.log(props)}
       </SchoolBox>
     </Link>
   );

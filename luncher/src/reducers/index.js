@@ -2,9 +2,9 @@ import {
 	// REGISTER_START,
 	// REGISTER_SUCCESS,
 	// REGISTER_FAILURE,
-	// LOGIN_START,
-	// LOGIN_SUCCESS,
-	// LOGIN_FAILURE,
+	LOGIN_START,
+	LOGIN_SUCCESS,
+	LOGIN_FAILURE,
 	// GET_USERINFO_START,
 	// GET_USERINFO_SUCCESS,
 	// GET_USERINFO_FAILURE,
@@ -17,9 +17,15 @@ import {
 	// ADD_SCHOOL_START,
 	// ADD_SCHOOL_SUCCESS,
 	// ADD_SCHOOL_FAILURE,
-	// GET_SCHOOLDATA_START,
-	// GET_SCHOOLDATA_SUCCESS,
-	// GET_SCHOOLDATA_FAILURE,
+	GET_SCHOOLDATA_START,
+	GET_SCHOOLDATA_SUCCESS,
+	GET_SCHOOLDATA_FAILURE,
+	GET_DONORVIEW_START,
+	GET_DONORVIEW_SUCCESS,
+	GET_DONORVIEW_FAILURE,
+	GET_DONORVIEWDATA_START,
+	GET_DONORVIEWDATA_SUCCESS,
+	GET_DONORVIEWDATA_FAILURE,
 	// GET_SCHOOL_DONATIONS_START,
 	// GET_SCHOOL_DONATIONS_SUCCESS,
 	// GET_SCHOOL_DONATIONS_FAILURE,
@@ -64,6 +70,8 @@ const initialState = {
 	//school data
 	schools: [],
 	schoolData: [],
+	donorViewSchools: [],
+	donorViewData: [],
 	schoolEdit: '',
 	isSchoolEditing: false,
 	schoolAdded: [],
@@ -85,13 +93,28 @@ const reducer = (state = initialState, action) => {
 	// 		return {};
 	// 	case REGISTER_FAILURE:
 	// 		return {};
-	// //LOGIN
-	// 	case LOGIN_START:
-	// 		return {};
-	// 	case LOGIN_SUCCESS:
-	// 		return {};
-	// 	case LOGIN_FAILURE:
-	// 		return {};
+	//LOGIN
+		case LOGIN_START:
+			return {
+				...state,
+				loginIsLoading: true,
+			};
+		case LOGIN_SUCCESS:
+			return {
+				...state,
+				loginIsLoading: false,
+				token: action.payload.data,
+				// user: {
+				// 	id: action.payload.data.user.id,
+				// 	username: action.payload.data.user.username,
+				// 	role: action.payload.data.user.type,
+				// }
+			};
+		case LOGIN_FAILURE:
+			return {
+				...state,
+				loginIsLoading: false,
+			};
 	// //USERINFO
 	// 	case GET_USERINFO_START:
 	// 		return {};
@@ -117,6 +140,60 @@ const reducer = (state = initialState, action) => {
 				error: action.payload,
 				getAllSchoolIsLoading: false,
 				getAllSchoolIsUpdating: false,
+			};
+
+					//GET SCHOOL DATA
+		case GET_SCHOOLDATA_START:
+			return { ...state, };
+		case GET_SCHOOLDATA_SUCCESS:
+			return {
+				...state,
+				schoolData: action.payload,
+				schoolDonationsIsUpdating: false,
+				schoolDonationsIsDeleting: false,
+			};
+		case GET_SCHOOLDATA_FAILURE:
+			return {
+				...state,
+				schoolDonationsIsUpdating: false,
+				schoolDonationsIsDeleting: false,
+			};
+
+		//GET DONOR VIEW SCHOOLS
+		case GET_DONORVIEW_START:
+			return {
+				...state,
+				getAllSchoolIsLoading: true,
+			};
+		case GET_DONORVIEW_SUCCESS:
+			return {
+				...state,
+				donorViewSchools: action.payload.data,
+				getAllSchoolIsLoading: false,
+				getAllSchoolIsUpdating: false,
+			};
+		case GET_DONORVIEW_FAILURE:
+			return {
+				error: action.payload,
+				getAllSchoolIsLoading: false,
+				getAllSchoolIsUpdating: false,
+			};
+
+		//GET DONOR VIEW DATA
+		case GET_DONORVIEWDATA_START:
+				return { ...state, };
+		case GET_DONORVIEWDATA_SUCCESS:
+			return {
+				...state,
+				donorViewData: action.payload,
+				schoolDonationsIsUpdating: false,
+				schoolDonationsIsDeleting: false,
+			};
+		case GET_DONORVIEWDATA_FAILURE:
+			return {
+				...state,
+				schoolDonationsIsUpdating: false,
+				schoolDonationsIsDeleting: false,
 			};
 		//DELET/
 	// //DONATIONS

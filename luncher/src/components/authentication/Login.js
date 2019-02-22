@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { loginUser } from '../../actions/login_action';
 
 import LogoImg from '../../images/logo.png';
 import {
@@ -15,14 +16,26 @@ import {
 
 class Login extends Component {
   state = {
-    userName: '',
+    username: '',
     password: '',
   }
 
   handleChange = e => {
+    e.preventDefault();
 		this.setState({
 			[e.target.name]: e.target.value,
 		});
+  };
+
+  handleSubmitLogin = (e) => {
+    e.preventDefault();
+    let cred = {
+      username: this.state.username,
+      password: this.state.password,
+    };
+    this.props.loginUser(cred);
+    localStorage.setItem('username', this.state.username);
+    // window.location.reload('/schools');
   };
 
   render() {
@@ -33,9 +46,9 @@ class Login extends Component {
           <Form>
             <Input
               type="text"
-              name="userName"
+              name="username"
               placeholder="Username"
-              value={this.state.userName}
+              value={this.state.username}
               onChange={e => this.handleChange(e)}
             />
             <Input
@@ -45,7 +58,7 @@ class Login extends Component {
               value={this.state.password}
               onChange={e => this.handleChange(e)}
             />
-            <LoginButton>LOGIN</LoginButton>
+            <LoginButton onClick={(e) => this.handleSubmitLogin(e)}>LOGIN</LoginButton>
             <RegisterText>Need an account? 
               <RegisterSpan onClick={() => this.props.register()}>Register</RegisterSpan>
             </RegisterText>
@@ -56,4 +69,13 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    loginIsLoading: state.loginIsLoading,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);

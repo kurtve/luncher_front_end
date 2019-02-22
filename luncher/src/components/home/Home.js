@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import {
   getAllSchools,
+  getDonorSchools,
   // getUserInfo,
   // deleteSchool,
   // addSchool
@@ -23,15 +24,17 @@ class Home extends Component {
 		donation: '',
 		isEditing: false,
     isAdding: false,
-    schools: [],
 	}
 
 	componentDidMount() {
-    let userToken = localStorage.getItem('userToken');
+    let userToken = localStorage.getItem('jwt');
     this.setState({ userToken: userToken });
-    this.props.getAllSchools();
-		// this.props.getAllSchools(userToken);
-    // this.props.getUserInfo(userToken);
+
+    if (userToken === null) {
+      this.props.getDonorSchools();
+    } else {
+      this.props.getAllSchools(userToken);
+    };
 	}
 
 	handleChange = e => {
@@ -51,23 +54,32 @@ class Home extends Component {
 		return (
 			<Wrap>
 				{this.state.userToken === null ? (
-          this.props.schools.map(school => (
+          this.props.donorViewSchools.map(school => (
             <School
               key={school.id}
               school={school}
             />
           ))
         ) : (
-          <SchoolForm
-            name="addSchool"
-            onSubmit={e => this.handleAddSchool(e)}>
-            <SchoolName
-              name="schoolname"
-              value={this.state.schoolname}
-              required
-              onChange={e => this.handleChange(e)}/>
-            <AddSchool>Add School</AddSchool>
-          </SchoolForm>
+          <div>
+            <SchoolForm
+              name="addSchool"
+              onSubmit={e => this.handleAddSchool(e)}>
+              <SchoolName
+                name="schoolname"
+                value={this.state.schoolname}
+                required
+                onChange={e => this.handleChange(e)}/>
+              <AddSchool>Add School</AddSchool>
+            </SchoolForm>
+
+            {this.props.schools.map(school => (
+              <School
+                key={school.id}
+                school={school}
+              />
+            ))}
+          </div>
         )}
 			</Wrap>
 		);
@@ -77,6 +89,8 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     schools: state.schools,
+    token: state.userToken,
+    donorViewSchools: state.donorViewSchools,
     getAllSchoolsIsLoading: state.getAllSchoolsIsLoading,
     // user: {
     //   id: state.id,
@@ -95,6 +109,7 @@ export default connect(
   mapStateToProps,
   {
     getAllSchools,
+    getDonorSchools,
     // getUserInfo,
     // deleteSchool,
     // addSchool,

@@ -10,13 +10,12 @@ class Navigation extends Component {
   }
 
   componentDidMount() {
-    let userToken = localStorage.getItem('userToken');
+    let userToken = localStorage.getItem('jwt');
     this.setState({ userToken: userToken });
   }
 
   logoutUser = () => {
-		localStorage.removeItem('userToken');
-		localStorage.removeItem('id');
+		localStorage.removeItem('jwt');
 		window.location.reload();
   }
 
