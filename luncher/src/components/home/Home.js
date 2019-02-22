@@ -70,6 +70,8 @@ class Home extends Component {
                 value={this.state.schoolname}
                 required
                 onChange={e => this.handleChange(e)}/>
+              {/* <SchoolName 
+                name=""/> */}
               <AddSchool>Add School</AddSchool>
             </SchoolForm>
 

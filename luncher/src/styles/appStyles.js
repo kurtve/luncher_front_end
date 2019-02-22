@@ -123,14 +123,25 @@ export const Wrap = styled.div`
       border: 1px solid #9F9F9F;
       margin: 0px auto;
       margin-top: 20px;
-        &:hover {
-          border: 2px solid dodgerblue;
-        }
+      display: flex;
+      justify-content: space-between;
+        &:hover {border: 1px solid dodgerblue;}
     `
+
+      export const SchoolBoxItem = styled.div`
+        width: 33%;
+          &:nth-child(1){text-align: left;}
+          &:nth-child(2){text-align: center;}
+          &:nth-child(3){
+            text-align: right;
+            padding-right: 15px;
+          }
+      `
 
     export const H2 = styled.h2`
       font-size: 20px;
       color: #9F9F9F;
       padding-left: 15px;
       text-decoration: none;
+
     `

@@ -31,4 +31,5 @@ export {
   AddSchool,
   SchoolBox,
   H2,
+  SchoolBoxItem,
 } from '../styles/appStyles';
