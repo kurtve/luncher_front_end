@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import {
   getAllSchools,
   getDonorSchools,
-  // getUserInfo,
-  // deleteSchool,
   addSchool
 } from '../../actions';
 
@@ -57,7 +54,7 @@ class Home extends Component {
 	render() {
 		return (
 			<Wrap>
-				{this.state.userToken === null ? (
+				{!this.state.userToken ? (
           this.props.donorViewSchools.map(school => (
             <School
               key={school.id}
@@ -103,16 +100,6 @@ const mapStateToProps = state => {
     token: state.userToken,
     donorViewSchools: state.donorViewSchools,
     getAllSchoolsIsLoading: state.getAllSchoolsIsLoading,
-    // user: {
-    //   id: state.id,
-    //   firstName: state.firstName,
-    //   lastName: state.lastName,
-    //   username: state.username,
-    //   type: state.type,
-    //   email: state.email,
-    // },
-    // username: state.username,
-    // schoolAdded: state.schoolAdded,
   };
 };
 
@@ -121,8 +108,6 @@ export default connect(
   {
     getAllSchools,
     getDonorSchools,
-    // getUserInfo,
-    // deleteSchool,
     addSchool,
   }
 )(Home);

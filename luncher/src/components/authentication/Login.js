@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/login_action';
-import { Link, NavLink, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import LogoImg from '../../images/logo.png';
 import {
@@ -42,13 +42,10 @@ class Login extends Component {
     };
     this.props.loginUser(cred);
     localStorage.setItem('username', this.state.username);
-    // window.location.reload('/schools');
   };
 
   render() {
-    const redirectUsers = this.state.loginKey;
-    if (redirectUsers) return <Redirect to="/" />;
-
+    if (this.state.loginKey) return <Redirect to="/" />;
     return (
       <RegWrap>
         <FormWrapper>

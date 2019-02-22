@@ -16,8 +16,6 @@ import {
 class SchoolData extends Component {
   state = {
     isEditingSchool: false,
-    isEditingDonation: false,
-    isAddingDonation: false,
     schoolName: '',
 		fundsRequested: '',
 		schoolAddress: '',
@@ -124,26 +122,8 @@ class SchoolData extends Component {
 
 const mapStateToProps = state => {
 	return {
-		// username: state.username,
-		// userRole: state.userRole,
 		token: state.userToken,
 		schoolData: state.schoolData,
-		// schoolDonations: state.schoolDonations,
-		// schoolDonationsIsUpdating: state.schoolDonationsIsUpdating,
-		// schoolDonationsIsDeleting: state.schoolDonationsIsDeleting,
-		// schoolInfoIsUpdating: state.schoolInfoIsUpdating,
-		// schoolEdit: state.schoolEdit,
-		// isSchoolEditing: state.isSchoolEditing,
-		// user: {
-		// 	id: state.id,
-		// 	firstName: state.firstName,
-		// 	lastName: state.lastName,
-		// 	username: state.username,
-		// 	userRole: state.userRole,
-		// 	email: state.email,
-		// },
-		// deleteError: state.deleteError,
-		// editError: state.editError,
 	};
 };
 
@@ -153,10 +133,5 @@ export default connect(
 		getSchoolData,
 		deleteSchool,
 		schoolEdit,
-		// getUserInfo,
-		// addDonation,
-		// deleteDonation,
-		// editDonation,
-		// getSchoolDonations,
 	}
 )(SchoolData);

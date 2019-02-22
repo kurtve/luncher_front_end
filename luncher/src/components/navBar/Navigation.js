@@ -25,7 +25,7 @@ class Navigation extends Component {
         <Link to='/'>
           <AppLogo src={Logo} />
         </Link>
-          {this.state.userToken === null ? (
+          {!this.state.userToken ? (
             <Menu>
               <NavLink to='/register' style={{ textDecoration: 'none'}}>
                 <ProfileLink>Register</ProfileLink>
@@ -34,7 +34,6 @@ class Navigation extends Component {
                 <LogoutButton>Login</LogoutButton>
               </NavLink>
             </Menu>
-
           ) : (
             <Menu>
               <NavLink to='/' onClick={this.logoutUser}>
