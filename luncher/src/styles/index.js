@@ -29,4 +29,10 @@ export {
   SchoolBox,
   H2,
   SchoolBoxItem,
+  SchoolWrap,
+  SchoolSpan,
+  SchoolButton,
+  ButtonWrap,
+  SchoolEdit,
+  SchoolInput
 } from '../styles/appStyles';

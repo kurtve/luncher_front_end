@@ -78,7 +78,6 @@ export const Wrap = styled.div`
 
     export const P = styled.p`
 			font-size: 16px;
-			color: gray;
 			padding-left: 6px;
 			color: white;
 		`
@@ -147,4 +146,44 @@ export const Wrap = styled.div`
       padding-left: 15px;
       text-decoration: none;
 
+    `
+
+  // SCHOOL DATA
+  export const SchoolWrap = styled.div`
+    width: 800px;
+    margin: 0px auto;
+    margin-top: 20px;
+      H2 {
+        text-align: center;
+        line-height: 15px;
+      }
+  `
+    
+    export const SchoolSpan = styled.span`
+      color: dodgerblue;
+    `
+
+    export const ButtonWrap = styled.div`
+      margin: 0px auto;
+      display: flex;
+      justify-content: center;
+      margin: 20px 0 20px 0;
+    `
+
+    export const SchoolButton = styled(AddSchool)`
+    `
+
+    export const SchoolEdit = styled.form`
+      display: flex;
+      justify-content: center;
+      margin: 15px 0 0 0;
+    `
+
+    export const SchoolInput = styled.input`
+      width: 150px;
+      height: 34px;
+      border: 1px solid grey;
+      color: gray;
+      padding-left: 10px;
+        &:nth-child(2) {margin: 0 10px 0 10px;}
     `
