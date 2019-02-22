@@ -6,7 +6,7 @@ import {
   getDonorSchools,
   // getUserInfo,
   // deleteSchool,
-  // addSchool
+  addSchool
 } from '../../actions';
 
 import { 
@@ -20,8 +20,8 @@ import School from '../school/School';
 class Home extends Component {
 	state = {
 		userToken: '',
-		schoolname: '',
-		donation: '',
+		schoolName: '',
+		fundsRequested: '',
 		isEditing: false,
     isAdding: false,
 	}
@@ -42,13 +42,17 @@ class Home extends Component {
 		this.setState({ [e.target.name] : e.target.value });
 	};
 
-	// handleAddSchool = e => {
-	// 	e.preventDefault();
-	// 	let userToken = localStorage.getItem('userToken');
-	// 	let school = { schoolname: this.state.schoolname };
-	// 	this.props.addSchool(userToken, school);
-	// 	this.props.getAllSchools(userToken);
-	// };
+	handleAddSchool = e => {
+		e.preventDefault();
+		let userToken = localStorage.getItem('jwt');
+		let school = {
+      schoolName: this.state.schoolName,
+      fundsRequested: this.state.fundsRequested
+    };
+
+		this.props.addSchool(userToken, school);
+		this.props.getAllSchools(userToken);
+	};
 
 	render() {
 		return (
@@ -66,12 +70,17 @@ class Home extends Component {
               name="addSchool"
               onSubmit={e => this.handleAddSchool(e)}>
               <SchoolName
-                name="schoolname"
+                name="schoolName"
+                placeholder="School Name"
                 value={this.state.schoolname}
-                required
-                onChange={e => this.handleChange(e)}/>
-              {/* <SchoolName 
-                name=""/> */}
+                onChange={e => this.handleChange(e)}
+                required />
+              <SchoolName 
+                name="fundsRequested"
+                placeholder="Amount"
+                value={this.state.fundsRequested}
+                onChange={e => this.handleChange(e)}
+                requred />
               <AddSchool>Add School</AddSchool>
             </SchoolForm>
 
@@ -114,6 +123,6 @@ export default connect(
     getDonorSchools,
     // getUserInfo,
     // deleteSchool,
-    // addSchool,
+    addSchool,
   }
 )(Home);

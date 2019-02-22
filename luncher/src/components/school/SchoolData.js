@@ -15,7 +15,7 @@ class SchoolData extends Component {
   };
 
   componentDidMount() {
-    let userToken = localStorage.getItem('userToken');
+    let userToken = localStorage.getItem('jwt');
   }
 
   render() {

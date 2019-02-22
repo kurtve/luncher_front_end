@@ -22,7 +22,6 @@ const School = props => {
             })}
           </H2>
         </SchoolBoxItem>
-        {console.log(props)}
       </SchoolBox>
     </Link>
   );

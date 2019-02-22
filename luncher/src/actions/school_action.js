@@ -20,9 +20,9 @@ export const GET_DONORVIEWDATA_FAILURE = 'GET_DONORVIEWDATA_FAILURE';
 // export const DELETE_SCHOOL_SUCCESS = 'DELETE_SCHOOL_SUCCESS';
 // export const DELETE_SCHOOL_FAILURE = 'DELETE_SCHOOL_FAILURE';
 
-// export const ADD_SCHOOL_START = 'ADD_SCHOOL_START';
-// export const ADD_SCHOOL_SUCCESS = 'ADD_SCHOOL_SUCCESS';
-// export const ADD_SCHOOL_FAILURE = 'ADD_SCHOOL_FAILURE';
+export const ADD_SCHOOL_START = 'ADD_SCHOOL_START';
+export const ADD_SCHOOL_SUCCESS = 'ADD_SCHOOL_SUCCESS';
+export const ADD_SCHOOL_FAILURE = 'ADD_SCHOOL_FAILURE';
 
 // export const GET_SCHOOL_DONATIONS_START = 'GET_SCHOOL_DONATIONS_START';
 // export const GET_SCHOOL_DONATIONS_SUCCESS = 'GET_SCHOOL_DONATIONS_SUCCESS';
@@ -70,26 +70,29 @@ export const getSchoolData = id => dispatch => {
 		.catch(err => dispatch({ type: GET_SCHOOLDATA_FAILURE, payload: err }));
 };
 
-// export const addSchool = (userToken, school) => dispatch => {
-// 	dispatch({ type: ADD_SCHOOL_START });
-// 	axios({
-// 		method: 'post',
-// 		url: ``,
-// 		headers: {	Authorization: userToken,},
-// 		data: {schoolname: school.schoolname,},
-// 	})
-// 		.then(res => {
-// 			dispatch({ type: ADD_SCHOOL_SUCCESS, payload: res.data });
-// 			dispatch({ type: GET_ALLSCHOOLS_START });
-// 			axios({
-// 				method: 'get',
-// 				url: ``,
-// 			})
-// 				.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
-// 				.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
-// 		})
-// 		.catch(err => dispatch({ type: ADD_SCHOOL_FAILURE, payload: err }));
-// };
+export const addSchool = (userToken, school) => dispatch => {
+	dispatch({ type: ADD_SCHOOL_START });
+	axios({
+		method: 'post',
+		url: `http://localhost:4040/schools`,
+		headers: { Authorization: userToken },
+		data: {
+      schoolName: school.schoolName,
+      fundsRequested: school.fundsRequested,
+    },
+	})
+		.then(res => {
+			dispatch({ type: ADD_SCHOOL_SUCCESS, payload: res.data });
+			dispatch({ type: GET_ALLSCHOOLS_START });
+			axios({
+				method: 'get',
+				url: `http://localhost:4040/schools`,
+			})
+				.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
+				.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
+		})
+		.catch(err => dispatch({ type: ADD_SCHOOL_FAILURE, payload: err }));
+};
 
 // export const deleteSchool = (userToken, schoolID) => dispatch => {
 // 	dispatch({ type: DELETE_SCHOOL_START });

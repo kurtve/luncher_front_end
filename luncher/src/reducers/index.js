@@ -1,7 +1,7 @@
 import {
-	// REGISTER_START,
-	// REGISTER_SUCCESS,
-	// REGISTER_FAILURE,
+	REGISTER_START,
+	REGISTER_SUCCESS,
+	REGISTER_FAILURE,
 	LOGIN_START,
 	LOGIN_SUCCESS,
 	LOGIN_FAILURE,
@@ -86,14 +86,15 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-	//REGISTER
-	// 	case REGISTER_START:
-	// 		return {};
-	// 	case REGISTER_SUCCESS:
-	// 		return {};
-	// 	case REGISTER_FAILURE:
-	// 		return {};
-	//LOGIN
+	// REGISTER
+		case REGISTER_START:
+			return { ...state };
+		case REGISTER_SUCCESS:
+			return { ...state };
+		case REGISTER_FAILURE:
+			return { ...state };
+
+	// LOGIN
 		case LOGIN_START:
 			return {
 				...state,
@@ -104,25 +105,22 @@ const reducer = (state = initialState, action) => {
 				...state,
 				loginIsLoading: false,
 				token: action.payload.data,
-				// user: {
-				// 	id: action.payload.data.user.id,
-				// 	username: action.payload.data.user.username,
-				// 	role: action.payload.data.user.type,
-				// }
 			};
 		case LOGIN_FAILURE:
 			return {
 				...state,
 				loginIsLoading: false,
 			};
-	// //USERINFO
+
+	// // USERINFO
 	// 	case GET_USERINFO_START:
 	// 		return {};
 	// 	case GET_USERINFO_SUCCESS:
 	// 		return {};
 	// 	case GET_USERINFO_FAILURE:
 	// 		return {};
-		//GET ALL SCHOOLS
+
+		// GET ALL SCHOOLS
 		case GET_ALLSCHOOLS_START:
 			return {
 				...state,
@@ -142,7 +140,7 @@ const reducer = (state = initialState, action) => {
 				getAllSchoolIsUpdating: false,
 			};
 
-					//GET SCHOOL DATA
+			//GET SCHOOL DATA
 		case GET_SCHOOLDATA_START:
 			return { ...state, };
 		case GET_SCHOOLDATA_SUCCESS:

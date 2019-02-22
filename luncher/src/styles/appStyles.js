@@ -98,10 +98,13 @@ export const Wrap = styled.div`
   `
 
     export const SchoolName = styled.input`
-      width: 200px;
+      width: 180px;
       height: 36px;
       border: 1px solid #9F9F9F;
       padding-left: 10px;
+        &:nth-child(2) {
+          margin-left: 10px;
+        }
     `
 
     export const AddSchool = styled.button`

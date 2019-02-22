@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Wrap } from './styles';
@@ -17,10 +17,19 @@ class App extends Component {
   }
 
   render() {
+    // const redirectUsers = this.state.loginKey;
+
+    // // redirectUsers.length > 0 ? <Redirect to="/" /> : (
+    // if ( redirectUsers.length > 0 ) {
+    //   return (<Redirect to="/" />)
+    // }
     return (
       <Wrap>
         <Navigation />
         <Route exact path="/" component={Home} />
+        {/* <Route exact path="/login" render={() => (
+
+        )} /> */}
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/school/:id" render={props => <SchoolData {...props} />} />

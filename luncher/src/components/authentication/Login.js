@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/login_action';
+import { Link, NavLink, Redirect } from 'react-router-dom';
 
 import LogoImg from '../../images/logo.png';
 import {
@@ -18,6 +19,12 @@ class Login extends Component {
   state = {
     username: '',
     password: '',
+    loginKey: '',
+  }
+
+  componentDidMount() {
+    let userToken = localStorage.getItem('jwt');
+    this.setState({ loginKey: userToken });
   }
 
   handleChange = e => {
@@ -39,6 +46,9 @@ class Login extends Component {
   };
 
   render() {
+    const redirectUsers = this.state.loginKey;
+    if (redirectUsers) return <Redirect to="/" />;
+
     return (
       <RegWrap>
         <FormWrapper>
@@ -58,7 +68,9 @@ class Login extends Component {
               value={this.state.password}
               onChange={e => this.handleChange(e)}
             />
-            <LoginButton onClick={(e) => this.handleSubmitLogin(e)}>LOGIN</LoginButton>
+            <Link to='/'>
+              <LoginButton onClick={(e) => this.handleSubmitLogin(e)}>LOGIN</LoginButton>
+            </Link>
             <RegisterText>Need an account? 
               <RegisterSpan onClick={() => this.props.register()}>Register</RegisterSpan>
             </RegisterText>
