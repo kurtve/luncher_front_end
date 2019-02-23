@@ -17,7 +17,8 @@ import School from '../school/School';
 class Home extends Component {
 	state = {
 		userToken: '',
-		schoolName: '',
+    schoolName: '',
+    schoolAddress: '',
 		fundsRequested: '',
 		isEditing: false,
     isAdding: false,
@@ -27,11 +28,8 @@ class Home extends Component {
     let userToken = localStorage.getItem('jwt');
     this.setState({ userToken: userToken });
 
-    if (userToken === null) {
-      this.props.getDonorSchools();
-    } else {
-      this.props.getAllSchools(userToken);
-    };
+    if (!userToken) { this.props.getDonorSchools()} 
+    else { this.props.getAllSchools(userToken)};
 	}
 
 	handleChange = e => {
@@ -44,7 +42,8 @@ class Home extends Component {
 		let userToken = localStorage.getItem('jwt');
 		let school = {
       schoolName: this.state.schoolName,
-      fundsRequested: this.state.fundsRequested
+      fundsRequested: this.state.fundsRequested,
+      schoolAddress: this.state.schoolAddress
     };
 
 		this.props.addSchool(userToken, school);
@@ -55,12 +54,11 @@ class Home extends Component {
 		return (
 			<Wrap>
 				{!this.state.userToken ? (
-          this.props.donorViewSchools.map(school => (
-            <School
-              key={school.id}
-              school={school}
-            />
-          ))
+          this.props.donorViewSchools ? (
+            this.props.donorViewSchools.map(school => (
+              <School key={school.id} school={school} />
+            ))
+          ) : null
         ) : (
           <div>
             <SchoolForm
@@ -69,7 +67,12 @@ class Home extends Component {
               <SchoolName
                 name="schoolName"
                 placeholder="School Name"
-                value={this.state.schoolname}
+                value={this.state.schoolName}
+                onChange={e => this.handleChange(e)}
+                required />
+              <SchoolName
+                name="schoolAddress"
+                placeholder="School Address"
                 onChange={e => this.handleChange(e)}
                 required />
               <SchoolName 
@@ -81,12 +84,11 @@ class Home extends Component {
               <AddSchool>Add School</AddSchool>
             </SchoolForm>
 
-            {this.props.schools.map(school => (
-              <School
-                key={school.id}
-                school={school}
-              />
-            ))}
+            {this.props.donorViewSchools ? (
+              this.props.schools.map(school => (
+                <School key={school.id} school={school} />
+              ))
+            ) : null}
           </div>
         )}
 			</Wrap>

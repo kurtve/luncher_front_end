@@ -24,10 +24,6 @@ export const ADD_SCHOOL_START = 'ADD_SCHOOL_START';
 export const ADD_SCHOOL_SUCCESS = 'ADD_SCHOOL_SUCCESS';
 export const ADD_SCHOOL_FAILURE = 'ADD_SCHOOL_FAILURE';
 
-// export const GET_SCHOOL_DONATIONS_START = 'GET_SCHOOL_DONATIONS_START';
-// export const GET_SCHOOL_DONATIONS_SUCCESS = 'GET_SCHOOL_DONATIONS_SUCCESS';
-// export const GET_SCHOOL_DONATIONS_FAILURE = 'GET_SCHOOL_DONATIONS_FAILURE';
-
 export const SCHOOL_EDIT_START = 'SCHOOL_EDIT_START';
 export const SCHOOL_EDIT_SUCCESS = 'SCHOOL_EDIT_SUCCESS';
 export const SCHOOL_EDIT_FAILURE = 'SCHOOL_EDIT_FAILURE';
@@ -78,7 +74,8 @@ export const addSchool = (userToken, school) => dispatch => {
 		headers: { Authorization: userToken },
 		data: {
       schoolName: school.schoolName,
-      fundsRequested: school.fundsRequested,
+			fundsRequested: school.fundsRequested,
+			schoolAddress: school.schoolAddress
     },
 	})
 		.then(res => {

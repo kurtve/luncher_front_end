@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { registerUser } from '../../actions/login_action';
 
 import LogoImg from '../../images/logo.png';
@@ -20,6 +21,12 @@ class Register extends Component {
     username: '',
     email: '',
     password: '',
+    loginKey: '',
+  }
+
+  componentDidMount() {
+    let userToken = localStorage.getItem('jwt');
+    this.setState({ loginKey: userToken });
   }
 
   handleChange = e => {
@@ -42,6 +49,7 @@ class Register extends Component {
 	};
   
   render() {
+    if (this.state.loginKey) return <Redirect to="/" />;
     return (
       <RegWrap>
         <FormWrapper>
@@ -51,37 +59,32 @@ class Register extends Component {
               name="firstName"
               placeholder="First Name"
               value={this.state.firstName}
-              onChange={e => this.handleChange(e)}
-            />
+              onChange={e => this.handleChange(e)} />
             <Input 
               name="lastName"
               placeholder="Last Name"
               value={this.state.lastName}
-              onChange={e => this.handleChange(e)}
-            />
+              onChange={e => this.handleChange(e)} />
             <Input 
               type="text"
               name="username"
               placeholder="Username"
               value={this.state.userName}
               onChange={e => this.handleChange(e)}
-              required
-            />
+              required />
             <Input 
               type="email"
               name="email"
               placeholder="Email"
               value={this.state.email}
-              onChange={e => this.handleChange(e)}
-            />
+              onChange={e => this.handleChange(e)} />
             <Input 
               type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}
               onChange={e => this.handleChange(e)}
-              required
-            />
+              required />
             <RegisterButton onClick={e => this.handleRegister(e)}>REGISTER</RegisterButton> 
           </Form>
         </FormWrapper>

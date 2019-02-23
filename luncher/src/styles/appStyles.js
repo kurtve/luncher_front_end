@@ -25,13 +25,12 @@ export const Wrap = styled.div`
 
     export const Menu = styled.div`
       padding-right: 25px;
-      width: 170px;
       display: flex;
       justify-content: space-between;
     `
 
       export const ProfileLink = styled.p`
-        margin-top: 22px;
+        margin: 22px 15px 0 0;
         color: dodgerblue;
         cursor: pointer;
           &:hover{text-decoration: underline;}
@@ -91,7 +90,6 @@ export const Wrap = styled.div`
   // ------
   export const SchoolForm = styled.form`
     width: 800px;
-    // border: 1px solid red;
     margin: 0px auto;
     margin-top: 40px;
   `
@@ -101,9 +99,7 @@ export const Wrap = styled.div`
       height: 36px;
       border: 1px solid #9F9F9F;
       padding-left: 10px;
-        &:nth-child(2) {
-          margin-left: 10px;
-        }
+        &:nth-child(2) {margin: 0 10px 0 10px;}
     `
 
     export const AddSchool = styled.button`

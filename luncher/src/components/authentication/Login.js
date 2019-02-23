@@ -56,15 +56,13 @@ class Login extends Component {
               name="username"
               placeholder="Username"
               value={this.state.username}
-              onChange={e => this.handleChange(e)}
-            />
+              onChange={e => this.handleChange(e)} />
             <Input
               type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}
-              onChange={e => this.handleChange(e)}
-            />
+              onChange={e => this.handleChange(e)} />
             <Link to='/'>
               <LoginButton onClick={(e) => this.handleSubmitLogin(e)}>LOGIN</LoginButton>
             </Link>

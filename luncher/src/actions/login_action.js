@@ -24,7 +24,21 @@ export const registerUser = user => dispatch => {
 	})
 		.then(res => {
 			dispatch({ type: REGISTER_SUCCESS, payload: res });
-			window.location.reload();
+			dispatch({ type: LOGIN_START });
+			axios({
+				method: 'post',
+				url: `http://localhost:4040/admins/login`,
+				data: {
+					password: user.password,
+					username: user.username
+				}
+			})
+				.then(res => {
+					dispatch({ type: LOGIN_SUCCESS, payload: res });
+					localStorage.setItem('jwt', res.data.token);
+					window.location.reload();
+				})
+				.catch(err => dispatch({ type: LOGIN_FAILURE, payload: err }))
 		})
 		.catch(err => dispatch({ type: REGISTER_FAILURE, payload: err }));
 };

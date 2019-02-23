@@ -5,9 +5,7 @@ import { Nav, AppLogo, Menu, ProfileLink, LogoutButton } from '../../styles/appS
 import Logo from '../../images/logo.png';
 
 class Navigation extends Component {
-  state = {
-    userToken: '',
-  }
+  state = { userToken: '' }
 
   componentDidMount() {
     let userToken = localStorage.getItem('jwt');
@@ -22,9 +20,7 @@ class Navigation extends Component {
   render() {
     return(
       <Nav>
-        <Link to='/'>
-          <AppLogo src={Logo} />
-        </Link>
+        <Link to='/'><AppLogo src={Logo} /></Link>
           {!this.state.userToken ? (
             <Menu>
               <NavLink to='/register' style={{ textDecoration: 'none'}}>
