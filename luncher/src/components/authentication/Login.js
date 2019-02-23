@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { loginUser } from '../../actions/login_action';
+import { Link, Redirect } from 'react-router-dom';
 
 import LogoImg from '../../images/logo.png';
 import {
@@ -15,17 +17,35 @@ import {
 
 class Login extends Component {
   state = {
-    userName: '',
+    username: '',
     password: '',
+    loginKey: '',
+  }
+
+  componentDidMount() {
+    let userToken = localStorage.getItem('jwt');
+    this.setState({ loginKey: userToken });
   }
 
   handleChange = e => {
+    e.preventDefault();
 		this.setState({
 			[e.target.name]: e.target.value,
 		});
   };
 
+  handleSubmitLogin = (e) => {
+    e.preventDefault();
+    let cred = {
+      username: this.state.username,
+      password: this.state.password,
+    };
+    this.props.loginUser(cred);
+    localStorage.setItem('username', this.state.username);
+  };
+
   render() {
+    if (this.state.loginKey) return <Redirect to="/" />;
     return (
       <RegWrap>
         <FormWrapper>
@@ -33,19 +53,19 @@ class Login extends Component {
           <Form>
             <Input
               type="text"
-              name="userName"
+              name="username"
               placeholder="Username"
-              value={this.state.userName}
-              onChange={e => this.handleChange(e)}
-            />
+              value={this.state.username}
+              onChange={e => this.handleChange(e)} />
             <Input
               type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}
-              onChange={e => this.handleChange(e)}
-            />
-            <LoginButton>LOGIN</LoginButton>
+              onChange={e => this.handleChange(e)} />
+            <Link to='/'>
+              <LoginButton onClick={(e) => this.handleSubmitLogin(e)}>LOGIN</LoginButton>
+            </Link>
             <RegisterText>Need an account? 
               <RegisterSpan onClick={() => this.props.register()}>Register</RegisterSpan>
             </RegisterText>
@@ -56,4 +76,13 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    loginIsLoading: state.loginIsLoading,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);
