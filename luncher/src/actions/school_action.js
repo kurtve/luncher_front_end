@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export const GET_ALLSCHOOLS_START = 'GET_ALLSCHOOLS_START ';
 export const GET_ALLSCHOOLS_SUCCESS = 'GET_ALLSCHOOLS_SUCCESS';
 export const GET_ALLSCHOOLS_FAILURE = 'GET_ALLSCHOOLS_FAILURE';
@@ -32,7 +33,7 @@ export const getDonorSchools = () => dispatch => {
 	dispatch({ type: GET_DONORVIEW_START });
 
 	axios
-		.get(`http://localhost:4040/donorView`)
+		.get(`https://api.lambda-luncher.com/donorView`)
 		.then(res => dispatch({ type: GET_DONORVIEW_SUCCESS, payload: res }))
 		.catch(err => dispatch({ type: GET_DONORVIEW_FAILURE, payload: err }));
 };
@@ -41,7 +42,7 @@ export const getDonorSchoolsData = id => dispatch => {
 	dispatch({ type: GET_DONORVIEWDATA_START });
   
   axios
-    .get(`http://localhost:4040/donorView/${id}`)
+    .get(`https://api.lambda-luncher.com/donorView/${id}`)
 		.then(res => dispatch({ type: GET_DONORVIEWDATA_SUCCESS, payload: res.data[0] }))
 		.catch(err => dispatch({ type: GET_DONORVIEWDATA_FAILURE, payload: err }));
 };
@@ -50,7 +51,7 @@ export const getAllSchools = (userToken) => dispatch => {
 	dispatch({ type: GET_ALLSCHOOLS_START });
 	axios({
 		method: 'get',
-		url: `http://localhost:4040/schools`,
+		url: `https://api.lambda-luncher.com/schools`,
 		headers: { Authorization: userToken }
 	})
 	.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
@@ -61,7 +62,7 @@ export const getSchoolData = id => dispatch => {
 	dispatch({ type: GET_SCHOOLDATA_START });
   
   axios
-    .get(`http://localhost:4040/schools/${id}`)
+    .get(`https://api.lambda-luncher.com/schools/${id}`)
 		.then(res => dispatch({ type: GET_SCHOOLDATA_SUCCESS, payload: res.data }))
 		.catch(err => dispatch({ type: GET_SCHOOLDATA_FAILURE, payload: err }));
 };
@@ -70,7 +71,7 @@ export const addSchool = (userToken, school) => dispatch => {
 	dispatch({ type: ADD_SCHOOL_START });
 	axios({
 		method: 'post',
-		url: `http://localhost:4040/schools`,
+		url: `https://api.lambda-luncher.com/schools`,
 		headers: { Authorization: userToken },
 		data: {
       schoolName: school.schoolName,
@@ -83,7 +84,7 @@ export const addSchool = (userToken, school) => dispatch => {
 			dispatch({ type: GET_ALLSCHOOLS_START });
 			axios({
 				method: 'get',
-				url: `http://localhost:4040/schools`,
+				url: `https://api.lambda-luncher.com/schools`,
 			})
 				.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
 				.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
@@ -95,7 +96,7 @@ export const deleteSchool = (userToken, schoolID) => dispatch => {
 	dispatch({ type: DELETE_SCHOOL_START });
 	axios({
 		method: 'delete',
-		url: `http://localhost:4040/schools/${schoolID}`,
+		url: `https://api.lambda-luncher.com/schools/${schoolID}`,
 		headers: { Authorization: userToken }
 	})
 		.then(res => {
@@ -103,7 +104,7 @@ export const deleteSchool = (userToken, schoolID) => dispatch => {
 			dispatch({ type: GET_ALLSCHOOLS_START });
 			axios({
 				method: 'get',
-				url: `http://localhost:4040/schools`,
+				url: `https://api.lambda-luncher.com/schools`,
 			})
 				.then(res => dispatch({ type: GET_ALLSCHOOLS_SUCCESS, payload: res }))
 				.catch(err => dispatch({ type: GET_ALLSCHOOLS_FAILURE, payload: err }));
@@ -115,7 +116,7 @@ export const schoolEdit = (userToken, info, id) => dispatch => {
 	dispatch({ type: SCHOOL_EDIT_START });
 	axios({
 		method: 'put',
-		url: `http://localhost:4040/schools/${id}`,
+		url: `https://api.lambda-luncher.com/schools/${id}`,
 		headers: { Authorization: userToken },
 		data: {
       schoolName: info.schoolName,
@@ -128,7 +129,7 @@ export const schoolEdit = (userToken, info, id) => dispatch => {
 			dispatch({ type: GET_SCHOOLDATA_START });
 			axios({
 				method: 'get',
-				url: `http://localhost:4040/schools/${id}`,
+				url: `https://api.lambda-luncher.com/schools/${id}`,
 			})
         .then(res => dispatch({ type: GET_SCHOOLDATA_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: GET_SCHOOLDATA_FAILURE, payload: err }));

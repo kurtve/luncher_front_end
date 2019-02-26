@@ -12,7 +12,7 @@ export const registerUser = user => dispatch => {
 	dispatch({ type: REGISTER_START });
 	axios({
 		method: 'post',
-		url: `http://localhost:4040/admins/register`,
+		url: `https://api.lambda-luncher.com/admins/register`,
 		data: {
 			email: user.email,
 			firstName: user.firstName,
@@ -27,7 +27,7 @@ export const registerUser = user => dispatch => {
 			dispatch({ type: LOGIN_START });
 			axios({
 				method: 'post',
-				url: `http://localhost:4040/admins/login`,
+				url: `https://api.lambda-luncher.com/admins/login`,
 				data: {
 					password: user.password,
 					username: user.username
@@ -47,7 +47,7 @@ export const loginUser = user => dispatch => {
 	dispatch({ type: LOGIN_START });
 	axios({
 		method: 'post',
-		url: `http://localhost:4040/admins/login`,
+		url: `https://api.lambda-luncher.com/admins/login`,
 		data: {
 			password: user.password,
 			username: user.username,
