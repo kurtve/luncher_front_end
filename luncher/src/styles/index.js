@@ -3,9 +3,6 @@ export {
   FormWrapper,
   Logo,
   Input,
-  RadioDiv,
-  InputRadio,
-  RadioLable,
   Form,
   LoginButton,
   RegisterButton,
@@ -31,4 +28,11 @@ export {
   AddSchool,
   SchoolBox,
   H2,
+  SchoolBoxItem,
+  SchoolWrap,
+  SchoolSpan,
+  SchoolButton,
+  ButtonWrap,
+  SchoolEdit,
+  SchoolInput
 } from '../styles/appStyles';

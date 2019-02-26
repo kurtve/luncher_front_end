@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { registerUser } from '../../actions/login_action';
 
 import LogoImg from '../../images/logo.png';
 import {
   RegWrap,
   FormWrapper,
   Input,
-  RadioDiv,
-  InputRadio,
-  RadioLable,
   Form,
   Logo,
   RegisterButton,
@@ -18,10 +17,16 @@ class Register extends Component {
   state = {
     firstName: '',
     lastName: '',
-    userRole: '',
-    userName: '',
+    type: '',
+    username: '',
     email: '',
     password: '',
+    loginKey: '',
+  }
+
+  componentDidMount() {
+    let userToken = localStorage.getItem('jwt');
+    this.setState({ loginKey: userToken });
   }
 
   handleChange = e => {
@@ -35,15 +40,16 @@ class Register extends Component {
 		let user = {
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
-			type: this.state.userRole,
-			username: this.state.userName,
+			type: this.state.type,
+			username: this.state.username,
 			email: this.state.email,
 			password: this.state.password,
 		};
-		// this.props.registerUser(user);
+		this.props.registerUser(user);
 	};
   
   render() {
+    if (this.state.loginKey) return <Redirect to="/" />;
     return (
       <RegWrap>
         <FormWrapper>
@@ -53,62 +59,32 @@ class Register extends Component {
               name="firstName"
               placeholder="First Name"
               value={this.state.firstName}
-              onChange={e => this.handleChange(e)}
-            />
+              onChange={e => this.handleChange(e)} />
             <Input 
               name="lastName"
               placeholder="Last Name"
               value={this.state.lastName}
-              onChange={e => this.handleChange(e)}
-            />
-            <RadioDiv>
-              <div>
-                <InputRadio 
-                  type="radio"
-                  id="User"
-                  name="userRole"
-                  value="user"
-                  checked="checked"
-                  onChange={e => this.handleChange(e)}
-                  required
-                />
-                <RadioLable htmlFor="doner">Doner</RadioLable>
-              </div>
-              <div>
-                <InputRadio 
-                  type="radio"
-                  id="admin"
-                  name="userRole"
-                  value="admin"
-                  onChange={e => this.handleChange(e)}
-                  required
-                />
-                <RadioLable htmlFor="admin">Admin</RadioLable>
-              </div>
-            </RadioDiv>
+              onChange={e => this.handleChange(e)} />
             <Input 
               type="text"
-              name="userName"
+              name="username"
               placeholder="Username"
               value={this.state.userName}
               onChange={e => this.handleChange(e)}
-              required
-            />
+              required />
             <Input 
               type="email"
               name="email"
               placeholder="Email"
               value={this.state.email}
-              onChange={e => this.handleChange(e)}
-            />
+              onChange={e => this.handleChange(e)} />
             <Input 
               type="password"
               name="password"
               placeholder="Password"
               value={this.state.password}
               onChange={e => this.handleChange(e)}
-              required
-            />
+              required />
             <RegisterButton onClick={e => this.handleRegister(e)}>REGISTER</RegisterButton> 
           </Form>
         </FormWrapper>
@@ -117,4 +93,11 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = state => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(Register);

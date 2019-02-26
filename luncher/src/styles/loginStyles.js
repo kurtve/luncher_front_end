@@ -24,8 +24,9 @@ export const RegWrap = styled.div`
   `
 
     export const Logo = styled.img`
-      width: 100%;
+      width: 180px;
       padding: 20px 0 10px 0;
+      margin: 0px auto;
     `
 
     export const Form = styled.form`
@@ -43,28 +44,6 @@ export const RegWrap = styled.div`
         border-radius: 7px;
         padding-left: 8px;
         margin-top: 10px;
-      `
-
-      export const RadioDiv = styled.div`
-        width: 100%;
-        margin: 0px auto;
-        padding: 10px 0 5px 0;
-        display: flex;
-        flex-flow: column;
-        justify-content: space-between;
-      `
-
-      export const InputRadio = styled.input`
-        width: 15px;
-        height: 15px;
-        margin-top: 5px;
-        cursor: pointer;
-      `
-
-      export const RadioLable = styled.label`
-        font-size: 15px;
-        color: #131313;
-        margin-left: 3px;
       `
 
       export const LoginButton = styled.button`
